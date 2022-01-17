@@ -19,8 +19,13 @@ RSpec.describe Enigma do
       @enigma.encrypt("hello world", "02715", "040895")
   expect(@enigma.key_hash).to be_a(Hash)
   end
-  #
-  # xit 'can encrypt a message using the #encrypt method' do
-  #   expect(@enigma.encrypt).to eq({decryption: "keder ohulw", key: "02715", date: "040895"})
-  # end
+
+  it 'can encrypt a message using the #encrypt method' do
+    expect(@enigma.encrypt("hello world", "02715", "040895")).to eq({encryption: "keder ohulw", key: "02715", date: "040895"})
+  end
+
+  it 'can decrypt a message with a key and date' do
+    @enigma.decrypt("keder ohylw", "02715", "040895")
+    expect({decryption: "hello world", key: "02715", date: "040895"})
+  end
 end

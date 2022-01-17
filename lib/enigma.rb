@@ -7,20 +7,27 @@ require './lib/offsetter'
 class Enigma
   include Keyoffset, Dateoffset, Offsetter
 
-  attr_reader :key, :date, :alphabet, :message
+  attr_reader :key, :date, :alphabet, :message, :direction
 
   def initialize
     @alphabet = ("a".."z").to_a << " "
   end
 
   def encrypt(message, key = rand(99999).to_s, date =(Time.now.strftime"%d%m%y").to_s)
-    @message = message
-    @key = key
-    # key_hash = key_hash_generator(key)
+    @direction = 1
     key_hash_generator(key)
     date_hash_generator(date)
     offset_combiner(key_hash, date_array)
     shift(message)
     p encryption_hash = { encryption: @translated_characters.join, key: key, date: date}
+  end
+
+  def decrypt(message, key, date)
+    @direction = (-1)
+    key_hash_generator(key)
+    date_hash_generator(date)
+    offset_combiner(key_hash, date_array)
+    shift(message)
+    p decryption_hash = { decryption: @translated_characters.join, key: key, date: date}
   end
 end
