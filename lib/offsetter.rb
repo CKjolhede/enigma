@@ -4,11 +4,17 @@ require './lib/dateoffset'
 require 'pry'
 
 module Offsetter
-  attr_reader
+  attr_reader :offsetters
 
 
   def offset_combiner(key_hash, date_array)
-    @key_hash
+    @offsetters=Hash.new(0)
+    @key_hash.each do |k,v|
+    @offsetters[k]=(v + @date_array.shift.to_i)
+    end
 
+    @offsetters
+    # binding.pry
   end
+
 end
