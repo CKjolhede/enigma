@@ -15,7 +15,10 @@ RSpec.describe Enigma do
     expect(@enigma.alphabet).to be_a(Array)
   end
 
-  
+  it 'can show #encrypt passes argument to key_hash generator' do
+      @enigma.encrypt("hello world", "02715", "040895")
+  expect(@enigma.key_hash).to be_a(Hash)
+  end
   #
   # xit 'can encrypt a message using the #encrypt method' do
   #   expect(@enigma.encrypt).to eq({decryption: "keder ohulw", key: "02715", date: "040895"})
