@@ -38,4 +38,8 @@ RSpec.describe Enigma do
     decrypted = @enigma.decrypt("nmjduhugxtb", "02715")
     expect(decrypted).to eq({:decryption=>"hello world", :key=>"02715", :date=>"170122"})
   end
+
+  it 'can encrypt a message (generates random key and uses todays date)' do
+    expect(@enigma.encrypt("hello world")).to a_hash_including(:encryption, :key, :date)
+  end
 end

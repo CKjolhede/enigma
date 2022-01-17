@@ -13,7 +13,7 @@ class Enigma
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def encrypt(message, key = rand(99999).to_s, date =(Time.now.strftime"%d%m%y").to_s)
+  def encrypt(message, key = rand(99999).to_s.rjust(5,"0"), date =(Time.now.strftime"%d%m%y").to_s)
     @direction = 1
     key_hash_generator(key)
     date_hash_generator(date)
@@ -22,7 +22,7 @@ class Enigma
     p encryption_hash = { encryption: @translated_characters.join, key: key, date: date}
   end
 
-  def decrypt(message, key = rand(99999).to_s, date =(Time.now.strftime"%d%m%y").to_s)
+  def decrypt(message, key = rand(99999).to_s.rjust(5,"0"), date =(Time.now.strftime"%d%m%y").to_s)
     @direction = (-1)
     key_hash_generator(key)
     date_hash_generator(date)
