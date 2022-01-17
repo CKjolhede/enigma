@@ -1,10 +1,10 @@
-require 'simplecov'
-require './lib/date'
 require './lib/enigma'
+require './lib/keyoffset'
+require 'pry'
 
 RSpec.describe Enigma do
     before(:each) do
-    @enigma=Enigma.new#(text: "hello world",key: "02715",date: "040895")
+    @enigma = Enigma.new
     end
 
   it 'demonstrates that Enigma class exists' do
@@ -15,4 +15,9 @@ RSpec.describe Enigma do
     expect(@enigma.alphabet).to be_a(Array)
   end
 
+  
+  #
+  # xit 'can encrypt a message using the #encrypt method' do
+  #   expect(@enigma.encrypt).to eq({decryption: "keder ohulw", key: "02715", date: "040895"})
+  # end
 end
