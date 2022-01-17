@@ -22,7 +22,7 @@ class Enigma
     p encryption_hash = { encryption: @translated_characters.join, key: key, date: date}
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key = rand(99999).to_s, date =(Time.now.strftime"%d%m%y").to_s)
     @direction = (-1)
     key_hash_generator(key)
     date_hash_generator(date)
