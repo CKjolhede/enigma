@@ -20,16 +20,16 @@ module Offsetter
     @characters.each_with_index do |character, index_id|
       original_index = @alphabet.index(character)
       if index_id % 4 == 0
-        rotated_alphabet = @alphabet.rotate(@offsetters[:a])
+        rotated_alphabet = @alphabet.rotate(@offsetters[:a] * @direction)
         @translated_characters << rotated_alphabet[original_index]
       elsif index_id % 4 == 1
-        rotated_alphabet = @alphabet.rotate(@offsetters[:b])
+        rotated_alphabet = @alphabet.rotate(@offsetters[:b] * @direction)
         @translated_characters << rotated_alphabet[original_index]
       elsif index_id % 4 == 2
-        rotated_alphabet = @alphabet.rotate(@offsetters[:c])
+        rotated_alphabet = @alphabet.rotate(@offsetters[:c] * @direction)
         @translated_characters << rotated_alphabet[original_index]
       else index_id % 4 == 3
-        rotated_alphabet = @alphabet.rotate(@offsetters[:d])
+        rotated_alphabet = @alphabet.rotate(@offsetters[:d] * @direction)
         @translated_characters << rotated_alphabet[original_index]
       end
     end
