@@ -4,7 +4,7 @@ require './lib/dateoffset'
 require 'pry'
 
 module Offsetter
-  attr_reader :offsetters, :characters
+  attr_reader :offsetters, :characters, :translated_characters
 
 
   def offset_combiner(key_hash, date_array)
@@ -12,15 +12,27 @@ module Offsetter
     @key_hash.each do |k,v|
     @offsetters[k]=(v + @date_array.shift.to_i)
     end
-
-    @offsetters
-    # binding.pry
   end
 
   def shift(message)
-    @characters = []
+    @translated_characters = []
     @characters = message.downcase.chars
-    @characters
+    @characters.each_with_index do |character, index_id|
+      original_index = @alphabet.index(character)
+      if index_id % 4 == 0
+        rotated_alphabet = @alphabet.rotate(@offsetters[:a])
+        @translated_characters << rotated_alphabet[original_index]
+      elsif index_id % 4 == 1
+        rotated_alphabet = @alphabet.rotate(@offsetters[:b])
+        @translated_characters << rotated_alphabet[original_index]
+      elsif index_id % 4 == 2
+        rotated_alphabet = @alphabet.rotate(@offsetters[:c])
+        @translated_characters << rotated_alphabet[original_index]
+      else index_id % 4 == 3
+        rotated_alphabet = @alphabet.rotate(@offsetters[:d])
+        @translated_characters << rotated_alphabet[original_index]
+      end
+    end
   end
 
 end

@@ -17,4 +17,8 @@ RSpec.describe Offsetter do
   it 'can transform message into an array of characters' do
     expect(@enigma.characters).to eq(["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"])
   end
+
+  it 'can translate characters based upon its index in character array' do
+    expect(@enigma.translated_characters).to eq(["k", "e", "d", "e", "r", " ", "o", "h", "u", "l", "w"])
+  end
 end
