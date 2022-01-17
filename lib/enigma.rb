@@ -4,7 +4,7 @@ require './lib/keyoffset'
 require './lib/dateoffset'
 
 class Enigma
-  include Keyoffset, Dateoffset
+  include Keyoffset, Dateoffset #Offsetter
   attr_reader :key, :date, :alphabet, :message
 
   def initialize

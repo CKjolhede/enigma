@@ -16,4 +16,5 @@ RSpec.describe Dateoffset do
     @enigma.encrypt("hello world", "02715", "040895")
     expect(@enigma.date_array).to eq(["1", "0", "2", "5"])
   end
+
 end
