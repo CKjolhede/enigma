@@ -21,5 +21,6 @@ class Enigma
     date_hash_generator(date)
     offset_combiner(key_hash, date_array)
     shift(message)
+    p encryption_hash = { encryption: @translated_characters.join, key: key, date: date}
   end
 end
