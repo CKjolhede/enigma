@@ -10,7 +10,7 @@ RSpec.describe Offsetter do
     @enigma.encrypt("hello world", "02715", "040895")
   end
 
-  it 'has a working @offset_cominer to combine date_array with key_hash values' do
+  it 'has a working @offset_combiner to combine date_array with key_hash values' do
     expect(@enigma.offsetters).to eq({:a=>3, :b=>27, :c=>73, :d=>20})
   end
 

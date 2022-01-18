@@ -9,8 +9,9 @@ module Offsetter
 
   def offset_combiner(key_hash, date_array)
     @offsetters=Hash.new(0)
+    @date_array_consumable = @date_array.clone
     @key_hash.each do |k,v|
-    @offsetters[k]=(v + @date_array.shift.to_i)
+      @offsetters[k]=(v + @date_array_consumable.shift.to_i)
     end
   end
 
