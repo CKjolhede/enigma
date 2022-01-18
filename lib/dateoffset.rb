@@ -1,4 +1,6 @@
 require './lib/enigma'
+require './lib/offsetter'
+require './lib/keyoffset'
 require 'pry'
 
 module Dateoffset
@@ -9,5 +11,4 @@ module Dateoffset
     @date_transformed = (date.to_i * date.to_i).to_s.slice(-4,4)
     @date_array = @date_transformed.split("")
   end
-
 end

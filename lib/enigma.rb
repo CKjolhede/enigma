@@ -7,7 +7,7 @@ require './lib/offsetter'
 class Enigma
   include Keyoffset, Dateoffset, Offsetter
 
-  attr_reader :key, :date, :alphabet, :message, :direction
+  attr_reader :key, :date, :alphabet, :message, :direction, :date_array
 
   def initialize
     @alphabet = ("a".."z").to_a << " "
